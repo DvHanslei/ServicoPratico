@@ -6,8 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesquisa da Detetive</title>
 
-    <style>
-        /* Centraliza e organiza a imagem e o botão lado a lado */
+    <!-- Font Awesome para carregar o ícone do idioma pulando -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+    <style>   
+        /* Centraliza e organiza o título e o mini botão lado a lado */
+        .cabecalho {
+            position: relative;
+            padding-right: 120px; /* Cria espaço na direita para o botão não bater no texto */
+        }
+
+        .mini-btn-tradutor {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 15px;
+            background-color: #f0f4f8;
+            border: 1px solid #dcdcdc;
+            color: #333333;
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .mini-btn-tradutor:hover {
+            background-color: #008CBA;
+            color: white;
+            border-color: #008CBA;
+        }
+
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
@@ -61,53 +96,86 @@
                 display: inline-block;
             }
         }
-      /* contencao para empilhar novos botoees*/
-      .botoes-contencao {
-        tex-aling: center; /*centralizar o bloco*/
-        margin-top: 20px; /*para dar espaco entre os botoes*/
-      }
 
-      /*estilo dos novos botoes (metro) */
-      #btnMetro {
-        background-color: #4CAF50; /* verde */
-        color: whaite;
-        border: none;
-        border-radius: 6px; 
-        padding: 12px 55px;
-        font-size: 16px;
-
-        /*#btnMetro:hover {
-          background-color: #3e8e41;
+        /* contencao para empilhar novos botoes*/
+        .botoes-container {
+            text-align: center; /* centralizar o bloco */
+            margin-top: 20px; /* para dar espaco entre os botoes */
         }
-      
-    </style>
-</head>
-<body>
 
+        /* estilo dos novos botoes (metro) */
+        #btnMetro {
+            background-color: #4CAF50; /* verde */
+            color: white;
+            border: none;
+            border-radius: 6px; 
+            padding: 12px 55px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #btnMetro:hover {
+            background-color: #3e8e41;
+        }
+
+        /* Esconde a palavra traduzir no celular para manter o layout limpo */
+        @media (max-width: 480px) {
+            .mini-btn-tradutor span {
+                display: none;
+            }
+            .mini-btn-tradutor {
+                padding: 6px 10px;
+            }
+        }
+    </style>       
+</head>
+<body>  
+
+<div class="cabecalho">   
     <h1>Onde quer ir?</h1>
 
-    <!-- 1. A Detetive vem primeiro -->
-  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuNVEdQJVsKEiZPcOaIa6pcT7UoS1sp6TwV07gXM19X9MtzVBJdw_6qCW58vpyOm7XMmm9tg6hxTW4SFHLEADBihfVhIhkQCYkzy0oJMU7HcGZ2nuwKn5kFwjZemYmqQvBtq57dvTP-HU/s800/job_tantei_woman.png" alt="Detetive procurando erros" width="200">
+    <!-- icone de tradução -->
+    <a href="#" onclick="document.querySelector('.goog-te-menu-value').click(); return false;" class="mini-btn-tradutor">
+        <i class="fa-solid fa-language fa-bounce"></i> <span>Traduzir</span>    
+    </a>
+</div>
 
-    <!-- 2. O único botão de pesquisar vem logo na frente dela -->
-    <button id="btnEndereco">pesquise endereço</button>
+<!-- Elemento invisivel do tradutor e o script do Google -->
+<div id="google_translate_element" style="display:none;"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'pt',
+    includedLanguages: 'en,es,ja,fr,de',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//://google.com"></script>
+    
+<!-- 1. A Detetive vem primeiro -->
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuNVEdQJVsKEiZPcOaIa6pcT7UoS1sp6TwV07gXM19X9MtzVBJdw_6qCW58vpyOm7XMmm9tg6hxTW4SFHLEADBihfVhIhkQCYkzy0oJMU7HcGZ2nuwKn5kFwjZemYmqQvBtq57dvTP-HU/s800/job_tantei_woman.png" alt="Detetive procurando erros" width="200">
 
-  <!--botoes do metro-->
-    <div class="botoes-container">
-        <button id="btnMetro">Linhas de Metrô (Japão)</button>
-    </div>
+<!-- 2. O único botão de pesquisar vem logo na frente dela -->
+<button id="btnEndereco">pesquise endereço</button>
 
-    <!-- O JavaScript que faz o botão abrir o Google Maps -->
-    <script>
-        const botaoEndereco = document.getElementById('btnEndereco');
-        botaoEndereco.addEventListener('click', () => {
-            window.open('https://www.google.com/maps/@35.9111618,139.6197098,15z?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D', '_blank');
-        });
-      const botaoMetro = document.getElementById('btnMetro');
-      botaoMetro.addEventListener('click', () => {
+<!-- botoes do metro -->
+<div class="botoes-container">
+    <button id="btnMetro">Linhas de Metrô (Japão)</button>
+</div>
+
+<!-- O JavaScript que faz o botão abrir o Google Maps e JREast -->
+<script>
+    const botaoEndereco = document.getElementById('btnEndereco');
+    botaoEndereco.addEventListener('click', () => {
+        window.open('https://www.google.com/maps/@35.9111618,139.6197098,15z?entry=ttu&g_ep=EgoyMDI2MDUyNy4wIKXMDSoASAFQAw%3D%3D', '_blank');
+    });
+
+    const botaoMetro = document.getElementById('btnMetro');
+    botaoMetro.addEventListener('click', () => {
         window.open('https://www.jreast.co.jp/map', '_blank');
-      });
-    </script>
+    });
+</script>
 
 </body>
 </html>
