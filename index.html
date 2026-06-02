@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR">     <!--começo do html-->
 <head>
     <meta charset="UTF-8">
     <!-- 1. ADICIONADO: Esta linha impede que o site fique minúsculo no celular -->
@@ -85,7 +85,21 @@
 <body>
 
     <h1>Onde quer ir?</h1>
-
+                              <!--botão de tradutor-->
+    <a href="#" onclick="document.querySelector('.goog-te-menu-value').click(); return false;" class="mini-btn-tradutor">
+        <i class="fa-solid fa-language fa-bounce"></i> <span>Traduzir</span>    
+    </a>
+       <!-- Elemento invisivel do tradutor e o script do Google -->
+<div id="google_translate_element" style="display:none;"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'pt',
+    includedLanguages: 'en,es,ja,fr,de',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+    
     <!-- 1. A Detetive vem primeiro -->
   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuNVEdQJVsKEiZPcOaIa6pcT7UoS1sp6TwV07gXM19X9MtzVBJdw_6qCW58vpyOm7XMmm9tg6hxTW4SFHLEADBihfVhIhkQCYkzy0oJMU7HcGZ2nuwKn5kFwjZemYmqQvBtq57dvTP-HU/s800/job_tantei_woman.png" alt="Detetive procurando erros" width="200">
 
